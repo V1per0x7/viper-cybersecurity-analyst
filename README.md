@@ -51,10 +51,10 @@ The public demo runs against one bundled, disposable OWASP Juice Shop instance b
   <img src="assets/dashboard-overview.png" width="760" alt="VIPER command center after a completed scan, showing captured sessions and a live execution trace">
 </p>
 
-**3. Inspect the target directly.** A real embedded browser lets you browse the same lab the scan just ran against.
+**3. Inspect the real finding.** VIPER's actual dashboard — the same one used locally, not a stripped-down imitation — surfaces the exact endpoint, request type, and confidence for what it found.
 
 <p align="center">
-  <img src="assets/lab-browser.png" width="760" alt="Embedded browser inspecting the real bundled Juice Shop lab">
+  <img src="assets/findings.png" width="760" alt="VIPER findings view showing a real critical SQL injection finding from the bundled Juice Shop lab">
 </p>
 
 Every visitor gets their own isolated session — your captured identities are yours alone, and if someone else's scan is already running you get a live, honest "in progress" status instead of a confusing error.
