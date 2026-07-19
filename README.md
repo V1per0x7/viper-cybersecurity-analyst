@@ -1,73 +1,73 @@
 <div align="center">
-
-<img src="assets/viper-mark.svg" width="72" alt="VIPER mark">
-
-# VIPER
-### Cybersecurity Analyst — built for OpenAI Build Week
-
-**Faster application-security work without trading away evidence, privacy, or control.**
-
-<a href="{{VIPER_DEMO_URL}}"><strong>▶ Try the live demo</strong></a>
-&nbsp;·&nbsp;
-<a href="#how-viper-works">How it works</a>
-&nbsp;·&nbsp;
-<a href="#the-viper-standard">Engineering standard</a>
-
+  <img src="assets/viper-mark.svg" width="110" alt="VIPER logo">
 </div>
 
-<br>
+<h1 align="center">VIPER</h1>
+<p align="center"><strong>A bounded, evidence-first control plane for application-security research — submitted to OpenAI Build Week 2026.</strong></p>
 
-<div align="center">
-  <img src="assets/viper-laptop-demo.gif" width="820" alt="VIPER dashboard: capturing attacker and victim sessions, running a bounded scan, and watching it complete live">
-</div>
+<p align="center">
+VIPER models an application as observed operations and the relationships between them, instead of a pile of unrelated URLs. Fixed scope is checked before any target work begins, evidence stays attached to the exact request that produced it, and the public dashboard only ever sees a sanitized, allowlisted projection — never raw scanner state.
+</p>
 
-<div align="center">
-<sub><strong>Real product, real footage.</strong> Every screen here is the actual dashboard running against a real, disposable OWASP Juice Shop instance — nothing staged.</sub>
-</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/OpenAI-Build%20Week%202026-10a37f?logo=openai&logoColor=white" alt="OpenAI Build Week">
+  <img src="https://img.shields.io/badge/Built%20with-Codex%20%2B%20GPT--5.6-412991" alt="Built with Codex">
+  <img src="https://img.shields.io/badge/status-live%20demo-brightgreen" alt="Status">
+  <img src="https://img.shields.io/badge/python-3.13-3776AB?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white" alt="Docker">
+</p>
 
-<br>
+<p align="center">
+  <a href="{{VIPER_DEMO_URL}}"><strong>Try the live demo »</strong></a>
+</p>
 
-## Why I built it
+## Table of contents
 
-Security researchers have more tools than ever, but important findings still get lost in noise and disconnected output. I started VIPER to make the work faster without making it careless: understand the application, follow the workflow, keep evidence attached to the correct operation, and say *unknown* when the proof is not there.
+- [Overview](#overview)
+- [Demo walkthrough](#demo-walkthrough)
+- [Try it yourself](#try-it-yourself)
+- [The VIPER Standard](#the-viper-standard)
+- [What's next](#whats-next)
 
-That problem is becoming more urgent as companies build faster with AI. Orca Security's 2026 research across more than 1,200 production organizations reports that [81% of organizations running AI packages had at least one known vulnerability, while 99.9% of alerts with an available fix remained unpatched](https://orca.security/resources/blog/2026-state-of-ai-security-report-summary/).
+## Overview
 
-## What VIPER does
+The following diagram shows how a request stays bounded from authorization through to the public dashboard:
 
-VIPER brings discovery, workflow analysis, bounded testing, evidence, and reporting into one control plane. Instead of treating an application as a pile of unrelated URLs, it models observed operations and the relationships between them.
+<p align="center">
+  <img src="assets/architecture.svg" width="820" alt="VIPER architecture: scope, operations, evidence, public output">
+</p>
 
-<table>
-<tr><td width="26px">🔒</td><td><strong>Fixed scope, verified first</strong> — authorization is checked before any target work begins.</td></tr>
-<tr><td>🎭</td><td><strong>Real attacker/victim sessions</strong> — the demo captures two distinct authenticated identities server-side, not a fake toggle.</td></tr>
-<tr><td>🧵</td><td><strong>Evidence stays attached</strong> — temporary values stay bound to the correct user, operation, occurrence, and request location.</td></tr>
-<tr><td>🛑</td><td><strong>Fails closed</strong> — cancellation, privacy, and verifier uncertainty all fail closed by default.</td></tr>
-<tr><td>🪟</td><td><strong>Narrow public projection</strong> — public output is a sanitized, allowlisted contract, never raw scanner state.</td></tr>
-<tr><td>📊</td><td><strong>Honest metrics</strong> — metrics describe work that actually happened; skipped or failed work is never counted as success.</td></tr>
-</table>
+Codex and GPT-5.6 were used as a real engineering partner on the Build Week slice of this work: tracing callers, capturing real network traffic to diagnose broken routes, writing adversarial regressions, and reviewing consumers before anything shipped. VIPER does not ship AI inside the scanner itself — that stays future work.
 
-## Try it without receiving the private scanner
+## Demo walkthrough
 
-The public demo runs against one bundled OWASP Juice Shop instance, inside its own contained gateway.
+The public demo runs against one bundled, disposable OWASP Juice Shop instance behind a narrow gateway. There is no custom target field, credential upload, arbitrary proxy, or access to private scanner logs — only what's shown below.
 
-- A real embedded browser lets you inspect the target lab directly — signup, login, browsing all work against the real application.
-- Explicit **Capture Attacker Session** / **Capture Victim Session** controls perform real server-side authentication before the scan unlocks.
-- Multiple visitors are session-isolated: your captured identities are yours alone, and if someone else's scan is running you get a live, honest "in progress" status instead of a confusing error.
-- There is no custom target field, credential upload, arbitrary proxy, production API, or access to private scanner logs.
+**1. Capture two real, separate identities.** The dashboard registers fixed attacker and victim accounts on boot. Clicking **Capture Attacker Session** / **Capture Victim Session** performs a real server-side login for each — not a toggle.
 
-<a id="how-viper-works"></a>
+**2. Run the bounded scan.** Once both sessions are captured, **Start demo scan** unlocks and VIPER runs its fixed, passive stage plan against the lab.
 
-## How VIPER works
+<p align="center">
+  <img src="assets/dashboard-overview.png" width="760" alt="VIPER command center after a completed scan, showing captured sessions and a live execution trace">
+</p>
 
-<div align="center">
-  <img src="assets/architecture.svg" width="820" alt="VIPER architecture: fixed authorization enters a bounded control plane, producers normalize operations, evidence is verified, and only a sanitized projection reaches the public dashboard">
-</div>
+**3. Inspect the target directly.** A real embedded browser lets you browse the same lab the scan just ran against.
 
-The Build Week work focused on the foundation beneath this flow: a canonical operation contract, real session capture, and per-visitor isolation between workflow steps. Codex and GPT-5.6 helped trace callers, challenge assumptions, write adversarial regressions, capture real network traffic to diagnose broken routes, and review analogous consumers. Important changes still had to pass focused, adjacent, static, container, and browser checks before shipping.
+<p align="center">
+  <img src="assets/lab-browser.png" width="760" alt="Embedded browser inspecting the real bundled Juice Shop lab">
+</p>
 
-VIPER does **not** currently ship AI inside the scanner. AI assisted development during Build Week; privacy-safe product assistance remains future work.
+Every visitor gets their own isolated session — your captured identities are yours alone, and if someone else's scan is already running you get a live, honest "in progress" status instead of a confusing error.
 
-<a id="the-viper-standard"></a>
+## Try it yourself
+
+```bash
+docker build --file demo/Dockerfile --tag viper-demo .
+docker run -p 7860:7860 viper-demo
+# → http://127.0.0.1:7860
+```
+
+Or just use the [live hosted demo]({{VIPER_DEMO_URL}}) — no install, no signup.
 
 ## The VIPER Standard
 
@@ -75,14 +75,10 @@ VIPER does **not** currently ship AI inside the scanner. AI assisted development
 
 I would rather harden an existing pipeline until it is dependable than add ten checks that create noise, lose context, or cannot be verified. A gate with 1,635 passing tests and three failures is still a failure. The product is supposed to produce results people can trust, so its development follows the same rule.
 
-## What comes next
+## What's next
 
-The next steps are easier installation, deeper workflow understanding, team controls, audit history, safer secret handling, and enterprise deployment. Longer term, I want to add AI assistance that respects privacy and can be measured against the same evidence standard as the rest of VIPER.
-
-VIPER is a long-term project. I believe it can become a dependable cybersecurity analyst for both security teams and companies that are moving too quickly to leave security until later.
+Easier installation, deeper workflow understanding, team controls, audit history, safer secret handling, and enterprise deployment — and eventually, AI assistance inside the product itself, held to the same evidence standard as everything else.
 
 ---
 
-<div align="center">
-<sub>Only test systems you own or are explicitly authorized to assess. The public demo is intentionally locked to its bundled training lab.</sub>
-</div>
+<p align="center"><sub>Only test systems you own or are explicitly authorized to assess. The public demo is intentionally locked to its bundled training lab.</sub></p>

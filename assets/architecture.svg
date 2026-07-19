@@ -1,23 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="560" viewBox="0 0 1440 560" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
   <title id="title">VIPER bounded analysis architecture</title>
-  <desc id="desc">Authorization and fixed scope enter the control plane. Producers normalize operations, the workflow graph binds context, verification checks evidence, and a privacy projection supplies the dashboard.</desc>
+  <desc id="desc">Authorization and fixed scope enter the control plane. Producers normalize operations, verification checks evidence, and a privacy projection supplies the dashboard.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d1218"/><stop offset="1" stop-color="#111b27"/></linearGradient>
-    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-opacity=".28"/></filter>
-    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#59708a"/></marker>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#6b84a0"/></marker>
   </defs>
-  <rect width="1440" height="560" rx="28" fill="url(#bg)"/>
-  <text x="64" y="68" fill="#65a8ff" font-family="ui-monospace,monospace" font-size="16" font-weight="700" letter-spacing="3">BOUNDED ANALYSIS PATH</text>
-  <text x="64" y="106" fill="#e8eef4" font-family="Inter,Arial,sans-serif" font-size="29" font-weight="700">Context stays attached from authority to evidence.</text>
-  <g filter="url(#shadow)" font-family="Inter,Arial,sans-serif">
-    <g transform="translate(64 176)"><rect width="220" height="216" rx="18" fill="#151f29" stroke="#2a3a49"/><text x="24" y="40" fill="#6faeff" font-size="13" font-weight="700">01 / AUTHORITY</text><text x="24" y="79" fill="#f1f5f8" font-size="21" font-weight="700">Scope contract</text><text x="24" y="113" fill="#97a7b6" font-size="15">Consent</text><text x="24" y="141" fill="#97a7b6" font-size="15">Fixed target identity</text><text x="24" y="169" fill="#97a7b6" font-size="15">Bounded budgets</text><text x="24" y="197" fill="#58c493" font-size="13">fail closed</text></g>
-    <g transform="translate(340 176)"><rect width="220" height="216" rx="18" fill="#151f29" stroke="#2a3a49"/><text x="24" y="40" fill="#6faeff" font-size="13" font-weight="700">02 / CONTROL</text><text x="24" y="79" fill="#f1f5f8" font-size="21" font-weight="700">Stage lifecycle</text><text x="24" y="113" fill="#97a7b6" font-size="15">Ownership</text><text x="24" y="141" fill="#97a7b6" font-size="15">Cancellation</text><text x="24" y="169" fill="#97a7b6" font-size="15">Measured work</text><text x="24" y="197" fill="#58c493" font-size="13">canonical ledger</text></g>
-    <g transform="translate(616 176)"><rect width="220" height="216" rx="18" fill="#151f29" stroke="#2a3a49"/><text x="24" y="40" fill="#6faeff" font-size="13" font-weight="700">03 / OPERATIONS</text><text x="24" y="79" fill="#f1f5f8" font-size="21" font-weight="700">Workflow graph</text><text x="24" y="113" fill="#97a7b6" font-size="15">Normalized requests</text><text x="24" y="141" fill="#97a7b6" font-size="15">Role-aware binding</text><text x="24" y="169" fill="#97a7b6" font-size="15">Temporary values</text><text x="24" y="197" fill="#58c493" font-size="13">exact occurrence</text></g>
-    <g transform="translate(892 176)"><rect width="220" height="216" rx="18" fill="#151f29" stroke="#2a3a49"/><text x="24" y="40" fill="#6faeff" font-size="13" font-weight="700">04 / EVIDENCE</text><text x="24" y="79" fill="#f1f5f8" font-size="21" font-weight="700">Verification</text><text x="24" y="113" fill="#97a7b6" font-size="15">Candidate review</text><text x="24" y="141" fill="#97a7b6" font-size="15">Reproducibility</text><text x="24" y="169" fill="#97a7b6" font-size="15">Honest uncertainty</text><text x="24" y="197" fill="#58c493" font-size="13">proof required</text></g>
-    <g transform="translate(1168 176)"><rect width="208" height="216" rx="18" fill="#172335" stroke="#3157e8"/><text x="24" y="40" fill="#83b9ff" font-size="13" font-weight="700">05 / OUTPUT</text><text x="24" y="79" fill="#f1f5f8" font-size="21" font-weight="700">Public view</text><text x="24" y="113" fill="#a8b7c5" font-size="15">Sanitized fields</text><text x="24" y="141" fill="#a8b7c5" font-size="15">Bounded metrics</text><text x="24" y="169" fill="#a8b7c5" font-size="15">No raw secrets</text><text x="24" y="197" fill="#65a8ff" font-size="13">operator dashboard</text></g>
+  <rect width="960" height="420" rx="20" fill="url(#bg)"/>
+  <text x="40" y="52" fill="#e8eef4" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700">How VIPER stays bounded</text>
+
+  <g font-family="Inter,Arial,sans-serif">
+    <g transform="translate(40 90)">
+      <rect width="190" height="220" rx="16" fill="#151f29" stroke="#2a3a49" stroke-width="2"/>
+      <text x="20" y="42" fill="#6faeff" font-size="15" font-weight="700">1 · SCOPE</text>
+      <text x="20" y="76" fill="#f1f5f8" font-size="22" font-weight="700">Authority</text>
+      <text x="20" y="112" fill="#a7b6c4" font-size="15">Fixed target</text>
+      <text x="20" y="136" fill="#a7b6c4" font-size="15">Bounded budgets</text>
+      <text x="20" y="188" fill="#58c493" font-size="14" font-weight="600">fail closed</text>
+    </g>
+    <g transform="translate(280 90)">
+      <rect width="190" height="220" rx="16" fill="#151f29" stroke="#2a3a49" stroke-width="2"/>
+      <text x="20" y="42" fill="#6faeff" font-size="15" font-weight="700">2 · WORK</text>
+      <text x="20" y="76" fill="#f1f5f8" font-size="22" font-weight="700">Operations</text>
+      <text x="20" y="112" fill="#a7b6c4" font-size="15">Real sessions</text>
+      <text x="20" y="136" fill="#a7b6c4" font-size="15">Per-visitor state</text>
+      <text x="20" y="188" fill="#58c493" font-size="14" font-weight="600">exact occurrence</text>
+    </g>
+    <g transform="translate(520 90)">
+      <rect width="190" height="220" rx="16" fill="#151f29" stroke="#2a3a49" stroke-width="2"/>
+      <text x="20" y="42" fill="#6faeff" font-size="15" font-weight="700">3 · PROOF</text>
+      <text x="20" y="76" fill="#f1f5f8" font-size="22" font-weight="700">Evidence</text>
+      <text x="20" y="112" fill="#a7b6c4" font-size="15">Verification</text>
+      <text x="20" y="136" fill="#a7b6c4" font-size="15">Honest uncertainty</text>
+      <text x="20" y="188" fill="#58c493" font-size="14" font-weight="600">proof required</text>
+    </g>
+    <g transform="translate(760 90)">
+      <rect width="164" height="220" rx="16" fill="#172335" stroke="#3157e8" stroke-width="2"/>
+      <text x="20" y="42" fill="#83b9ff" font-size="15" font-weight="700">4 · OUTPUT</text>
+      <text x="20" y="76" fill="#f1f5f8" font-size="22" font-weight="700">Public view</text>
+      <text x="20" y="112" fill="#c2ced8" font-size="15">Sanitized only</text>
+      <text x="20" y="136" fill="#c2ced8" font-size="15">No raw secrets</text>
+      <text x="20" y="188" fill="#65a8ff" font-size="14" font-weight="600">dashboard</text>
+    </g>
   </g>
-  <g stroke="#59708a" stroke-width="2" marker-end="url(#arrow)"><path d="M292 284h36"/><path d="M568 284h36"/><path d="M844 284h36"/><path d="M1120 284h36"/></g>
-  <path d="M64 454h1312" stroke="#263746"/>
-  <text x="64" y="495" fill="#8495a5" font-family="ui-monospace,monospace" font-size="14">PRIVACY BOUNDARY</text>
-  <text x="238" y="495" fill="#c2ced8" font-family="Inter,Arial,sans-serif" font-size="15">Credentials, raw traffic, private values, and internal logs do not cross into the public projection.</text>
+
+  <g stroke="#6b84a0" stroke-width="2.5" marker-end="url(#arrow)">
+    <path d="M232 200h44"/>
+    <path d="M472 200h44"/>
+    <path d="M712 200h44"/>
+  </g>
+
+  <path d="M40 350h880" stroke="#263746" stroke-width="1.5"/>
+  <text x="40" y="385" fill="#c2ced8" font-family="Inter,Arial,sans-serif" font-size="17">Credentials, raw traffic, and internal logs never cross into the public dashboard.</text>
 </svg>
