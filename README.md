@@ -18,7 +18,7 @@ VIPER models an application as observed operations and the relationships between
 </p>
 
 <p align="center">
-  <a href="{{VIPER_DEMO_URL}}"><strong>Try the live demo »</strong></a>
+  <a href="https://viper-buildweek-waker.supergogo500.workers.dev"><strong>Try the live demo »</strong></a>
 </p>
 
 ## Table of contents
@@ -67,7 +67,7 @@ docker run -p 7860:7860 viper-demo
 # → http://127.0.0.1:7860
 ```
 
-Or just use the [live hosted demo]({{VIPER_DEMO_URL}}) — no install, no signup.
+Or just use the [live hosted demo](https://viper-buildweek-waker.supergogo500.workers.dev) — no install, no signup.
 
 ## The VIPER Standard
 
