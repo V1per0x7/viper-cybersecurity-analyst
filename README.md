@@ -59,6 +59,12 @@ The public demo runs against one bundled, disposable OWASP Juice Shop instance b
 
 Every visitor gets their own isolated session — your captured identities are yours alone, and if someone else's scan is already running you get a live, honest "in progress" status instead of a confusing error.
 
+## Stack
+
+<p>
+  <img src="https://skillicons.dev/icons?i=python,docker,js,nodejs,linux,git,github,githubactions,cloudflare">
+</p>
+
 ## Try it yourself
 
 ```bash
