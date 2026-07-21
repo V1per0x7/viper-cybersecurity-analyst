@@ -1,75 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="360" viewBox="0 0 1120 360" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560" role="img" aria-labelledby="t d">
   <title id="t">How a VIPER scan works</title>
-  <desc id="d">Scope is checked first, then VIPER maps the app surface, probes it, confirms every finding with evidence, and publishes only a sanitized view to the dashboard.</desc>
+  <desc id="d">Scope is checked, the target is scanned by the VIPER engine, findings are saved and read from the database, then shown on the dashboard and exported as a PoC report.</desc>
   <defs>
     <style>
-      .card{fill:#f7f9fc;stroke:#e2e7ef;stroke-width:1.5}
-      .ic{fill:none;stroke:#ef2331;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-      .lbl{fill:#10151d;font:700 18px Inter,Segoe UI,Arial,sans-serif;text-anchor:middle}
-      .sub{fill:#6a7482;font:400 12.5px Inter,Segoe UI,Arial,sans-serif;text-anchor:middle}
-      .cap{fill:#8a929e;font:600 12px Inter,Segoe UI,Arial,sans-serif;text-anchor:middle;letter-spacing:.4px}
-      .num{fill:#fff;font:700 12px Inter,Segoe UI,Arial,sans-serif;text-anchor:middle}
-      .flow{stroke:#c3cad5;stroke-width:2.4}
-      .title{fill:#10151d;font:700 24px Inter,Segoe UI,Arial,sans-serif}
-      .foot{fill:#6a7482;font:400 15px Inter,Segoe UI,Arial,sans-serif}
+      .ic{fill:#fff;stroke:#ef2331;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+      .lbl{fill:#12161d;font:700 13px Inter,Segoe UI,Arial,sans-serif;text-anchor:middle;letter-spacing:.4px}
+      .al{fill:#2b3140;font:600 12px Inter,Segoe UI,Arial,sans-serif;letter-spacing:.3px}
+      .alc{fill:#2b3140;font:600 12px Inter,Segoe UI,Arial,sans-serif;text-anchor:middle;letter-spacing:.3px}
+      .flow{fill:none;stroke:#333a45;stroke-width:1.8}
     </style>
-    <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#ef2331"/></marker>
+    <marker id="ah" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#333a45"/></marker>
   </defs>
+  <rect width="760" height="560" fill="#ffffff"/>
 
-  <rect width="1120" height="360" rx="18" fill="#ffffff"/>
-  <text x="45" y="52" class="title">How a VIPER scan works</text>
-
-  <!-- flow arrows -->
+  <!-- ===== arrows ===== -->
   <g class="flow" marker-end="url(#ah)">
-    <path d="M195 167 H262"/>
-    <path d="M415 167 H482"/>
-    <path d="M635 167 H702"/>
-    <path d="M855 167 H922"/>
-  </g>
-  <!-- arrow number badges + captions -->
-  <g>
-    <text x="228" y="150" class="cap">MAP</text>       <circle cx="228" cy="167" r="11" fill="#ef2331"/><text x="228" y="171" class="num">1</text>
-    <text x="448" y="150" class="cap">ATTACK</text>    <circle cx="448" cy="167" r="11" fill="#ef2331"/><text x="448" y="171" class="num">2</text>
-    <text x="668" y="150" class="cap">CONFIRM</text>   <circle cx="668" cy="167" r="11" fill="#ef2331"/><text x="668" y="171" class="num">3</text>
-    <text x="888" y="150" class="cap">PUBLISH</text>   <circle cx="888" cy="167" r="11" fill="#ef2331"/><text x="888" y="171" class="num">4</text>
+    <path d="M110 116 V254"/>                         <!-- in-scope -> target -->
+    <path d="M172 296 H320"/>                          <!-- target -> engine (1) -->
+    <path d="M380 240 V116"/>                          <!-- engine -> dashboard (4) -->
+    <path d="M442 262 H596"/>                          <!-- engine -> db (2) -->
+    <path d="M596 292 H444"/>                          <!-- db -> engine (3) -->
+    <path d="M380 318 V446"/>                          <!-- engine -> report (5) -->
   </g>
 
-  <!-- Node 1: Scope -->
-  <g>
-    <rect x="45" y="90" width="150" height="155" rx="14" class="card"/>
-    <g transform="translate(120 133)"><path class="ic" d="M0 -18 L15 -11 V1 C15 12 8 17 0 20 C-8 17 -15 12 -15 1 V-11 Z"/><path class="ic" d="M-6 0 L-1 6 L8 -6"/></g>
-    <text x="120" y="203" class="lbl">Scope</text>
-    <text x="120" y="225" class="sub">authorized target</text>
-  </g>
-  <!-- Node 2: Surface -->
-  <g>
-    <rect x="265" y="90" width="150" height="155" rx="14" class="card"/>
-    <g transform="translate(340 133)"><circle class="ic" cx="-4" cy="-4" r="11"/><path class="ic" d="M4.5 4.5 L14 14"/></g>
-    <text x="340" y="203" class="lbl">Surface</text>
-    <text x="340" y="225" class="sub">hosts · URLs · params · JS</text>
-  </g>
-  <!-- Node 3: Probe -->
-  <g>
-    <rect x="485" y="90" width="150" height="155" rx="14" class="card"/>
-    <g transform="translate(560 133)"><circle class="ic" cx="0" cy="0" r="13"/><circle class="ic" cx="0" cy="0" r="4.5"/><path class="ic" d="M0 -18 V-13 M0 13 V18 M-18 0 H-13 M13 0 H18"/></g>
-    <text x="560" y="203" class="lbl">Probe</text>
-    <text x="560" y="225" class="sub">SQLi · XSS · IDOR · JWT</text>
-  </g>
-  <!-- Node 4: Evidence -->
-  <g>
-    <rect x="705" y="90" width="150" height="155" rx="14" class="card"/>
-    <g transform="translate(780 133)"><circle class="ic" cx="0" cy="0" r="14"/><path class="ic" d="M-6.5 0 L-1.5 6 L8 -7"/></g>
-    <text x="780" y="203" class="lbl">Evidence</text>
-    <text x="780" y="225" class="sub">proof, or it's dropped</text>
-  </g>
-  <!-- Node 5: Dashboard -->
-  <g>
-    <rect x="925" y="90" width="150" height="155" rx="14" class="card"/>
-    <g transform="translate(1000 133)"><rect class="ic" x="-16" y="-13" width="32" height="22" rx="2.5"/><path class="ic" d="M-6 13 H6 M0 9 V13"/><path class="ic" d="M-9 3 V-2 M-2 3 V-6 M5 3 V0 M10 3 V-4"/></g>
-    <text x="1000" y="203" class="lbl">Dashboard</text>
-    <text x="1000" y="225" class="sub">findings + PoC</text>
-  </g>
+  <!-- arrow labels -->
+  <text x="120" y="192" class="al">CHECK SCOPE</text>
+  <text x="246" y="284" class="alc">1. SCAN IN SCOPE</text>
+  <text x="392" y="182" class="al">4. SHOW FINDINGS</text>
+  <text x="519" y="252" class="alc">2. SAVE FINDINGS</text>
+  <text x="519" y="312" class="alc">3. READ FINDINGS</text>
+  <text x="392" y="388" class="al">5. EXPORT PoC</text>
 
-  <path d="M45 297 H1075" stroke="#eceff4" stroke-width="1.5"/>
-  <text x="45" y="328" class="foot">Scope is checked before any request. Credentials, raw traffic, and internal logs never reach the public dashboard.</text>
+  <!-- ===== IN SCOPE (shield) ===== -->
+  <g transform="translate(110 72)">
+    <path class="ic" d="M0 -22 L18 -14 V0 C18 14 10 20 0 24 C-10 20 -18 14 -18 0 V-14 Z"/>
+    <path class="ic" d="M-7 -1 L-2 5 L9 -8"/>
+  </g>
+  <text x="110" y="112" class="lbl">IN SCOPE</text>
+
+  <!-- ===== TARGET (laptop) ===== -->
+  <g transform="translate(110 292)">
+    <rect class="ic" x="-26" y="-20" width="52" height="34" rx="3"/>
+    <path class="ic" d="M-34 22 L-30 14 H30 L34 22 Z"/>
+  </g>
+  <text x="110" y="336" class="lbl">TARGET</text>
+
+  <!-- ===== VIPER ENGINE (cloud) ===== -->
+  <g transform="translate(380 278)">
+    <path class="ic" d="M-30 20 C-46 20 -49 2 -35 -3 C-40 -22 -16 -30 -8 -16 C-2 -33 28 -31 30 -12 C48 -16 52 8 36 15 C33 20 -18 20 -30 20 Z"/>
+  </g>
+  <text x="380" y="322" class="lbl">VIPER ENGINE</text>
+
+  <!-- ===== DASHBOARD (monitor) ===== -->
+  <g transform="translate(380 66)">
+    <rect class="ic" x="-28" y="-20" width="56" height="36" rx="3"/>
+    <path class="ic" d="M0 16 V24 M-11 24 H11"/>
+    <path class="ic" d="M-16 6 V-4 M-6 6 V-12 M4 6 V-7 M14 6 V-14"/>
+  </g>
+  <text x="380" y="112" class="lbl">DASHBOARD</text>
+
+  <!-- ===== DATABASE (cylinder) ===== -->
+  <g transform="translate(650 278)">
+    <path class="ic" d="M-26 -24 V24 C-26 31 26 31 26 24 V-24"/>
+    <ellipse class="ic" cx="0" cy="-24" rx="26" ry="8"/>
+    <path class="ic" d="M-26 -8 C-26 -1 26 -1 26 -8"/>
+    <path class="ic" d="M-26 8 C-26 15 26 15 26 8"/>
+  </g>
+  <text x="650" y="322" class="lbl">DATABASE</text>
+
+  <!-- ===== REPORT / PoC (document) ===== -->
+  <g transform="translate(380 476)">
+    <path class="ic" d="M-20 -26 H10 L22 -14 V26 H-20 Z"/>
+    <path class="ic" d="M10 -26 V-14 H22"/>
+    <path class="ic" d="M-12 -2 H14 M-12 8 H14 M-12 18 H6"/>
+  </g>
+  <text x="380" y="524" class="lbl">REPORT · PoC</text>
 </svg>
