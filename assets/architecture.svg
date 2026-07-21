@@ -15,12 +15,12 @@
 
   <!-- ===== arrows ===== -->
   <g class="flow" marker-end="url(#ah)">
-    <path d="M110 116 V254"/>                         <!-- in-scope -> target -->
-    <path d="M172 296 H320"/>                          <!-- target -> engine (1) -->
-    <path d="M380 240 V116"/>                          <!-- engine -> dashboard (4) -->
+    <path d="M110 114 V256"/>                         <!-- in-scope -> target -->
+    <path d="M172 296 H304"/>                          <!-- target -> engine (1) -->
+    <path d="M380 242 V110"/>                          <!-- engine -> dashboard (4) -->
     <path d="M442 262 H596"/>                          <!-- engine -> db (2) -->
-    <path d="M596 292 H444"/>                          <!-- db -> engine (3) -->
-    <path d="M380 318 V446"/>                          <!-- engine -> report (5) -->
+    <path d="M596 292 H460"/>                          <!-- db -> engine (3) -->
+    <path d="M380 318 V430"/>                          <!-- engine -> report (5) -->
   </g>
 
   <!-- arrow labels -->
